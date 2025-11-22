@@ -68,7 +68,7 @@ void loop(void)
 { 
   
   sensors.requestTemperatures();                              // Sends the command to get temperatures
-  Serial.print(sensors.getTempCByIndex(0)*1.8+32);            // Prints the temperature in Fahrenheit to the serial monitor
+  Serial.print(sensors.getTempFByIndex(0));                   // Prints the temperature in Fahrenheit to the serial monitor
 
   myFile = SD.open("temperature.csv", FILE_WRITE);            // Opens the temperature.csv file with write permissions under myFile
 
@@ -77,7 +77,7 @@ void loop(void)
     
     myFile.print(timeElapsed);                                // Appends elapsed time to file
     myFile.print(",");                                        // Appends a comma (comma seperated file)
-    myFile.println(sensors.getTempCByIndex(0)*1.8+32);        // Appends temperature data in fahrenheit to file, and newline
+    myFile.println(sensors.getTempFByIndex(0));               // Appends temperature data in fahrenheit to file, and newline
 
     Serial.println(" Appended.");                             // Confirms file opened and printed on serial monitor
     
